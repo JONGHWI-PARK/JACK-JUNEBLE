@@ -3,10 +3,10 @@ package eng_memory_book;
 import java.util.ArrayList;
 
 public class WordData {
-	
 	String eng;
 	String kor;
 	
+	WordData() {}
 	WordData(String eng, String kor) {
 		this.eng = eng;
 		this.kor = kor;

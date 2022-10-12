@@ -7,6 +7,7 @@ public class Test {
 	Scanner sc = new Scanner(System.in);
 	int correct_count;
 	int wrong_count;
+	WordData dummy_wd;
 	
 	public void console()
 	{
@@ -51,20 +52,22 @@ public class Test {
 	}
 	
 	public void correct_korean(int day)
-	{
+	{		
+		dummy_wd = new WordData();
+		
 		correct_count = wrong_count = 0;
 		
 		System.out.println("Korean, day : " + day);
 		
-		ArrayList<WordData> wd = Get_Day_Word(day);
+		ArrayList<WordData> wd = dummy_wd.Get_Day_Word(day);
 		
 		// test position
 		for(int i = 0; i < wd.size(); i++)
 		{
-			System.out.print("kor : " + wd.kor + " / eng : ");
+			System.out.print("kor : " + wd.get(i).kor + " / eng : ");
 			
 			String input_str = sc.nextLine();
-			if(input_str == wd.eng)
+			if(input_str == wd.get(i).eng)
 			{
 				correct_count++;
 			}
@@ -80,25 +83,27 @@ public class Test {
 		// feedback position
 		for(int i = 0; i < wd.size(); i++)
 		{
-			System.out.println("kor : " + wd.kor + " / eng : " + wd.eng);
+			System.out.println("kor : " + wd.get(i).kor + " / eng : " + wd.get(i).eng);
 		}
 	}
 	
 	public void correct_english(int day)
 	{
+		dummy_wd = new WordData();
+		
 		System.out.println("English, day : " + day);
 		
 		correct_count = wrong_count = 0;
 		
-		ArrayList<WordData> wd = Get_Day_Word(day);
+		ArrayList<WordData> wd = dummy_wd.Get_Day_Word(day);
 		
 		// test position
 		for(int i = 0; i < wd.size(); i++)
 		{
-			System.out.print("eng : " + wd.eng + " / kor : ");
+			System.out.print("eng : " + wd.get(i).eng + " / kor : ");
 			
 			String input_str = sc.nextLine();
-			if(input_str == wd.kor)
+			if(input_str == wd.get(i).kor)
 			{
 				correct_count++;
 			}
@@ -114,7 +119,7 @@ public class Test {
 		// feedback position
 		for(int i = 0; i < wd.size(); i++)
 		{
-			System.out.println("kor : " + wd.eng + " / eng : " + wd.);
+			System.out.println("kor : " + wd.get(i).kor + " / eng : " + wd.get(i).eng);
 		}
 	}
 }
