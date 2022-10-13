@@ -4,10 +4,17 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Test {
-	Scanner sc = new Scanner(System.in);
+	Scanner sc;
 	int correct_count;
 	int wrong_count;
 	WordData dummy_wd;
+	
+	Test() {
+		sc = new Scanner(System.in);
+		correct_count = 0;
+		wrong_count = 0;
+		dummy_wd = new WordData();
+	}
 	
 	public void console()
 	{
@@ -29,6 +36,7 @@ public class Test {
 			System.out.print("Select Day : ");
 			
 			int select_day = sc.nextInt();
+			sc.nextLine();
 
 			test_word(select_type, select_day);
 		}
@@ -53,21 +61,18 @@ public class Test {
 	
 	public void correct_korean(int day)
 	{		
-		dummy_wd = new WordData();
-		
 		correct_count = wrong_count = 0;
 		
 		System.out.println("Korean, day : " + day);
 		
 		ArrayList<WordData> wd = dummy_wd.Get_Day_Word(day);
 		
-		// test position
 		for(int i = 0; i < wd.size(); i++)
 		{
 			System.out.print("kor : " + wd.get(i).kor + " / eng : ");
 			
 			String input_str = sc.nextLine();
-			if(input_str == wd.get(i).eng)
+			if(input_str.equals(wd.get(i).eng))
 			{
 				correct_count++;
 			}
@@ -77,27 +82,18 @@ public class Test {
 			}
 		}
 		
-		// score position
-		System.out.print("your score is " + (double)correct_count / (correct_count + wrong_count) + "!!!\n\n");
-		
-		// feedback position
-		for(int i = 0; i < wd.size(); i++)
-		{
-			System.out.println("kor : " + wd.get(i).kor + " / eng : " + wd.get(i).eng);
-		}
+		Score_Check_Process();
+		Feedback_Process(wd);
 	}
 	
 	public void correct_english(int day)
 	{
-		dummy_wd = new WordData();
+		correct_count = wrong_count = 0;
 		
 		System.out.println("English, day : " + day);
 		
-		correct_count = wrong_count = 0;
-		
 		ArrayList<WordData> wd = dummy_wd.Get_Day_Word(day);
 		
-		// test position
 		for(int i = 0; i < wd.size(); i++)
 		{
 			System.out.print("eng : " + wd.get(i).eng + " / kor : ");
@@ -113,13 +109,24 @@ public class Test {
 			}
 		}
 		
-		// score position
-		System.out.print("your score is " + (double)correct_count / (correct_count + wrong_count) + "!!!\n\n");
-		
-		// feedback position
+		Score_Check_Process();
+		Feedback_Process(wd);
+	}
+	
+	// score position
+	public void Score_Check_Process()
+	{
+		System.out.println("correct : " + correct_count + ", wrong : " + wrong_count);
+		System.out.print("your score is " + correct_count / (double)(correct_count + wrong_count) * 100 + "!!!\n\n");
+	}
+	
+	// feedback position
+	public void Feedback_Process(ArrayList<WordData> wd)
+	{
 		for(int i = 0; i < wd.size(); i++)
 		{
 			System.out.println("kor : " + wd.get(i).kor + " / eng : " + wd.get(i).eng);
 		}
+		System.out.println();
 	}
 }

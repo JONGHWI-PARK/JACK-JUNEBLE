@@ -21,7 +21,7 @@ public class WordData {
 		
 		ArrayList<WordData> get_day_word = new ArrayList<WordData>();
 		
-		for(int i = 0; i < eng.length; i++) {
+		for(int i = 0; i < eng[0].length; i++) {
 			get_day_word.add(new WordData(eng[day-1][i], kor[day-1][i]));
 		}
 		
