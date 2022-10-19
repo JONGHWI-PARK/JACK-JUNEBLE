@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class Train {
 	Scanner sc = new Scanner(System.in);
 	
-	WordData dummy_wd = new WordData();
+//	WordData dummy_wd = new WordData();
+	WordDataDAO dummy_wd = new WordDataDAO();
 	
 	public void console()
 	{
@@ -33,7 +34,7 @@ public class Train {
 	
 	public void train_word(int day)
 	{ 
-		ArrayList<WordData> wd = dummy_wd.Get_Day_Word(day);
+		ArrayList<WordDataDTO> wd = dummy_wd.Get_Day_Word(day);
 		
 		for(int k = 0; k < 3; k++) {
 			
@@ -46,7 +47,7 @@ public class Train {
 				}
 				
 				for(int i = 0; i < wd.size(); i++) {
-					System.out.println(wd.get(i).eng + " " + wd.get(i).kor);
+					System.out.println(wd.get(i).getEng() + " " + wd.get(i).getKor());
 					
 					try {
 						Thread.sleep(3000); 
@@ -70,7 +71,7 @@ public class Train {
 				
 				for(int i = 0; i < wd.size(); i++) {
 					
-					System.out.println(wd.get(i).eng + " " + wd.get(i).kor);
+					System.out.println(wd.get(i).getEng() + " " + wd.get(i).getKor());
 					
 					try {
 						Thread.sleep(3000); 
