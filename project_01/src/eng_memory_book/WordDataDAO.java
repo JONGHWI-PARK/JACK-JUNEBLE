@@ -38,4 +38,9 @@ public class WordDataDAO {
 		
 		return get_day_word;
 	}
+	
+	public void dao_close()
+	{
+		dbc.db_close();
+	}
 }

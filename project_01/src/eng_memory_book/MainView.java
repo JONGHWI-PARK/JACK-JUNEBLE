@@ -38,5 +38,7 @@ public class MainView {
 					break;
 			}
 		}
+		
+		test.test_close();
 	}
 }

@@ -7,13 +7,13 @@ public class Test {
 	Scanner sc;
 	int correct_count;
 	int wrong_count;
-	WordData dummy_wd;
+	WordDataDAO dummy_wd;
 	
 	Test() {
 		sc = new Scanner(System.in);
 		correct_count = 0;
 		wrong_count = 0;
-		dummy_wd = new WordData();
+		dummy_wd = new WordDataDAO();
 	}
 	
 	public void console()
@@ -65,14 +65,14 @@ public class Test {
 		
 		System.out.println("Korean, day : " + day);
 		
-		ArrayList<WordData> wd = dummy_wd.Get_Day_Word(day);
+		ArrayList<WordDataDTO> wd = dummy_wd.Get_Day_Word(day);
 		
 		for(int i = 0; i < wd.size(); i++)
 		{
-			System.out.print("kor : " + wd.get(i).kor + " / eng : ");
+			System.out.print("kor : " + wd.get(i).getKor() + " / eng : ");
 			
 			String input_str = sc.nextLine();
-			if(input_str.equals(wd.get(i).eng))
+			if(input_str.equals(wd.get(i).getEng()))
 			{
 				correct_count++;
 			}
@@ -92,14 +92,14 @@ public class Test {
 		
 		System.out.println("English, day : " + day);
 		
-		ArrayList<WordData> wd = dummy_wd.Get_Day_Word(day);
+		ArrayList<WordDataDTO> wd = dummy_wd.Get_Day_Word(day);
 		
 		for(int i = 0; i < wd.size(); i++)
 		{
-			System.out.print("eng : " + wd.get(i).eng + " / kor : ");
+			System.out.print("eng : " + wd.get(i).getEng() + " / kor : ");
 			
 			String input_str = sc.nextLine();
-			if(input_str == wd.get(i).kor)
+			if(input_str == wd.get(i).getKor())
 			{
 				correct_count++;
 			}
@@ -121,12 +121,17 @@ public class Test {
 	}
 	
 	// feedback position
-	public void Feedback_Process(ArrayList<WordData> wd)
+	public void Feedback_Process(ArrayList<WordDataDTO> wd)
 	{
 		for(int i = 0; i < wd.size(); i++)
 		{
-			System.out.println("kor : " + wd.get(i).kor + " / eng : " + wd.get(i).eng);
+			System.out.println("kor : " + wd.get(i).getKor() + " / eng : " + wd.get(i).getEng());
 		}
 		System.out.println();
+	}
+	
+	public void test_close()
+	{
+		dummy_wd.dao_close();
 	}
 }
