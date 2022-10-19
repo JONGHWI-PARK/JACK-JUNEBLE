@@ -34,6 +34,7 @@ public class Train {
 	
 	public void train_word(int day)
 	{ 
+//		ArrayList<WordData> wd = dummy_wd.Get_Day_Word(day);
 		ArrayList<WordDataDTO> wd = dummy_wd.Get_Day_Word(day);
 		
 		for(int k = 0; k < 3; k++) {
@@ -47,6 +48,7 @@ public class Train {
 				}
 				
 				for(int i = 0; i < wd.size(); i++) {
+//					System.out.println(wd.get(i).eng + " " + wd.get(i).kor);
 					System.out.println(wd.get(i).getEng() + " " + wd.get(i).getKor());
 					
 					try {
@@ -71,6 +73,7 @@ public class Train {
 				
 				for(int i = 0; i < wd.size(); i++) {
 					
+//					System.out.println(wd.get(i).eng + " " + wd.get(i).kor);
 					System.out.println(wd.get(i).getEng() + " " + wd.get(i).getKor());
 					
 					try {
