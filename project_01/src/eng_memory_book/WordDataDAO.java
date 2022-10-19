@@ -15,8 +15,8 @@ public class WordDataDAO {
 		dbc = new DataBaseConnection();
 	}
 		
-	public ArrayList<WordData> Get_Day_Word(int day) {
-		ArrayList<WordData> get_day_word = new ArrayList<WordData>();
+	public ArrayList<WordDataDTO> Get_Day_Word(int day) {
+		ArrayList<WordDataDTO> get_day_word = new ArrayList<WordDataDTO>();
 		
 		String query_select ="SELECT ENG, KOR FROM ENG_WORD WHERE word_day= ?";
 		
@@ -27,7 +27,7 @@ public class WordDataDAO {
 			
 			while(rs.next()) {
 				//System.out.println(rs.getString(1) + ", " + rs.getString(2));
-				get_day_word.add(new WordData(rs.getString(1), rs.getString(2)));
+				get_day_word.add(new WordDataDTO(rs.getString(1), rs.getString(2)));
 			}
 			
 			rs.close();
