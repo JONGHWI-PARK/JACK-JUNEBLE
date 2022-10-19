@@ -40,5 +40,6 @@ public class MainView {
 		}
 		
 		test.test_close();
+		train.train_close();
 	}
 }

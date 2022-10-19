@@ -91,4 +91,9 @@ public class Train {
 			}
 		}
 	}
+	
+	public void train_close()
+	{
+		dummy_wd.dao_close();
+	}
 }
